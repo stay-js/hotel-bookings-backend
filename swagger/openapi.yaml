@@ -1,0 +1,342 @@
+openapi: "3.0.1"
+info:
+  title: Hotel Bookings API
+  version: 1.0.0
+  description: |
+    Az Ön feladata hotelek és foglalásainak kezelését lehetővé tevő API megvalósítása
+servers:
+  - url: http://backend.vm1.test
+    description: VM1 backend
+  - url: http://backend.vm2.test
+    description: VM2 backend
+  - url: http://backend.vm3.test
+    description: VM3 backend
+  - url: http://backend.vm4.test
+    description: VM4 backend
+  - url: http://backend.vm5.test
+    description: VM5 backend
+  - url: http://backend.vm6.test
+    description: VM6 backend
+paths:
+  /api/hotels:
+    get:
+      tags: [Hotels]
+      summary: Hotelek listájának lekérése
+      operationId: hotels.index
+      responses:
+        "200":
+          description: Hotelek listája
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/HotelResource"
+              example: {"data":[{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92,"bookings":[{"id":1,"name":"Prof. Fehér Bence","check_in":"2024-08-10","check_out":"2025-06-08","number_of_guests":3,"type":"family"},{"id":2,"name":"Magyar Kornél PhD","check_in":"2024-09-29","check_out":"2025-10-04","number_of_guests":4,"type":"family"},{"id":3,"name":"Veresné Fodor Szandra","check_in":"2024-11-30","check_out":"2026-03-05","number_of_guests":6,"type":"family"},{"id":4,"name":"Prof. Oláh Balázs","check_in":"2024-06-17","check_out":"2025-08-05","number_of_guests":1,"type":"single"},{"id":5,"name":"Budai Árpád PhD","check_in":"2024-10-17","check_out":"2025-09-01","number_of_guests":2,"type":"double"},{"id":16,"name":"Báró Máté Áron PhD","check_in":"2024-11-06","check_out":"2025-09-03","number_of_guests":4,"type":"family"},{"id":17,"name":"Pataki-Gáspár Kata","check_in":"2024-07-03","check_out":"2025-10-08","number_of_guests":1,"type":"single"},{"id":18,"name":"Özv. Török Dorián PhD","check_in":"2024-06-03","check_out":"2025-12-10","number_of_guests":2,"type":"twin"},{"id":19,"name":"Özv. Papp Vincéné","check_in":"2024-04-06","check_out":"2025-08-30","number_of_guests":2,"type":"double"},{"id":20,"name":"Dr. Veres Endre PhD","check_in":"2024-06-10","check_out":"2025-06-20","number_of_guests":2,"type":"twin"},{"id":21,"name":"Juhász-Kerekes Adél","check_in":"2025-03-18","check_out":"2025-09-23","number_of_guests":2,"type":"twin"},{"id":22,"name":"Kis Barna PhD","check_in":"2024-11-15","check_out":"2025-05-08","number_of_guests":1,"type":"single"},{"id":23,"name":"Prof. Lengyel Zsombor PhD","check_in":"2024-04-20","check_out":"2025-04-08","number_of_guests":1,"type":"single"},{"id":24,"name":"Váradi Ottó PhD","check_in":"2024-09-02","check_out":"2025-12-09","number_of_guests":1,"type":"single"},{"id":25,"name":"Prof. Deák Zsoltné","check_in":"2024-12-26","check_out":"2025-07-06","number_of_guests":1,"type":"single"},{"id":26,"name":"Máté Mia","check_in":"2025-03-20","check_out":"2025-12-25","number_of_guests":1,"type":"single"},{"id":27,"name":"Varga Áronné","check_in":"2025-03-11","check_out":"2026-03-09","number_of_guests":1,"type":"single"},{"id":28,"name":"Fekete Dalma PhD","check_in":"2024-12-27","check_out":"2025-05-17","number_of_guests":4,"type":"family"},{"id":29,"name":"Bognár Patrik PhD","check_in":"2024-11-27","check_out":"2025-11-03","number_of_guests":2,"type":"double"},{"id":30,"name":"Prof. Pásztor Benedek","check_in":"2024-12-16","check_out":"2025-06-10","number_of_guests":3,"type":"family"},{"id":31,"name":"Simon Rudolf PhD","check_in":"2024-07-10","check_out":"2025-11-10","number_of_guests":2,"type":"twin"},{"id":32,"name":"Özv. Kozma Endrené","check_in":"2025-03-27","check_out":"2025-04-02","number_of_guests":1,"type":"single"},{"id":33,"name":"Pap Rebeka PhD","check_in":"2024-04-26","check_out":"2025-11-25","number_of_guests":3,"type":"family"},{"id":34,"name":"Dr. Szőke Barnabásné","check_in":"2024-04-02","check_out":"2025-07-24","number_of_guests":4,"type":"family"},{"id":35,"name":"Szalai Doriánné","check_in":"2025-01-01","check_out":"2025-05-03","number_of_guests":1,"type":"single"},{"id":36,"name":"Fodor Gábor PhD","check_in":"2024-05-10","check_out":"2026-01-26","number_of_guests":2,"type":"double"},{"id":37,"name":"Kocsis Maja","check_in":"2025-02-10","check_out":"2025-09-06","number_of_guests":2,"type":"double"},{"id":38,"name":"Bálint Endrené","check_in":"2024-09-14","check_out":"2025-04-10","number_of_guests":2,"type":"twin"},{"id":39,"name":"Tóthné Papp Olívia","check_in":"2024-12-23","check_out":"2025-11-11","number_of_guests":1,"type":"single"},{"id":40,"name":"Balog Mirella","check_in":"2025-03-16","check_out":"2025-10-31","number_of_guests":1,"type":"single"}]},{"id":2,"name":"Hegedüs","address":"9952 Budapest, Nagy játszótér 52.","rating":null,"bookings":[{"id":6,"name":"Kozma Ernő PhD","check_in":"2024-12-17","check_out":"2025-11-03","number_of_guests":2,"type":"twin"},{"id":7,"name":"Simon Vincéné","check_in":"2024-07-12","check_out":"2025-05-06","number_of_guests":1,"type":"single"},{"id":8,"name":"Ifj. Orbán Bendegúz","check_in":"2025-01-02","check_out":"2025-10-23","number_of_guests":2,"type":"double"},{"id":9,"name":"Prof. Jakab Milla","check_in":"2024-08-08","check_out":"2025-12-18","number_of_guests":6,"type":"family"},{"id":10,"name":"Fülöp Antal","check_in":"2024-07-23","check_out":"2026-01-07","number_of_guests":1,"type":"single"}]},{"id":3,"name":"Novák","address":"6473 Székesfehérvár, Gitta turistaút 94.","rating":3.38,"bookings":[{"id":11,"name":"Nemes István","check_in":"2025-01-23","check_out":"2025-11-19","number_of_guests":2,"type":"double"},{"id":12,"name":"Szücs Attila PhD","check_in":"2025-02-15","check_out":"2025-08-03","number_of_guests":2,"type":"double"},{"id":13,"name":"Hajdu Géza PhD","check_in":"2024-05-09","check_out":"2025-05-26","number_of_guests":2,"type":"double"},{"id":14,"name":"Szücs Patrícia","check_in":"2024-11-08","check_out":"2025-12-26","number_of_guests":6,"type":"family"},{"id":15,"name":"Id. Soós Szervác","check_in":"2024-06-23","check_out":"2025-12-23","number_of_guests":1,"type":"single"}]}]}
+    post:
+      tags: [Hotels]
+      summary: Új hotel létrehozása
+      operationId: hotels.store
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HotelRequest"
+            example: {"name":"Hotel Example","address":"1011 Budapest, Fő utca 1.","rating":4.2}
+      responses:
+        "201":
+          description: Hotel létrehozva
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/HotelResource"
+              example: {"data":{"id":999,"name":"Hotel Example","address":"1011 Budapest, Fő utca 1.","rating":4.2,"bookings":[]}}
+        "422":
+          description: Validációs hiba
+
+  /api/hotels/{hotel}:
+    get:
+      tags: [Hotels]
+      summary: Egy adott hotel lekérése
+      operationId: hotels.show
+      parameters:
+        - name: hotel
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        "200":
+          description: Egy adott hotel
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/HotelResource"
+              example: {"data":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92,"bookings":[{"id":1,"name":"Prof. Fehér Bence","check_in":"2024-08-10","check_out":"2025-06-08","number_of_guests":3,"type":"family"},{"id":2,"name":"Magyar Kornél PhD","check_in":"2024-09-29","check_out":"2025-10-04","number_of_guests":4,"type":"family"},{"id":3,"name":"Veresné Fodor Szandra","check_in":"2024-11-30","check_out":"2026-03-05","number_of_guests":6,"type":"family"},{"id":4,"name":"Prof. Oláh Balázs","check_in":"2024-06-17","check_out":"2025-08-05","number_of_guests":1,"type":"single"},{"id":5,"name":"Budai Árpád PhD","check_in":"2024-10-17","check_out":"2025-09-01","number_of_guests":2,"type":"double"},{"id":16,"name":"Báró Máté Áron PhD","check_in":"2024-11-06","check_out":"2025-09-03","number_of_guests":4,"type":"family"},{"id":17,"name":"Pataki-Gáspár Kata","check_in":"2024-07-03","check_out":"2025-10-08","number_of_guests":1,"type":"single"},{"id":18,"name":"Özv. Török Dorián PhD","check_in":"2024-06-03","check_out":"2025-12-10","number_of_guests":2,"type":"twin"},{"id":19,"name":"Özv. Papp Vincéné","check_in":"2024-04-06","check_out":"2025-08-30","number_of_guests":2,"type":"double"},{"id":20,"name":"Dr. Veres Endre PhD","check_in":"2024-06-10","check_out":"2025-06-20","number_of_guests":2,"type":"twin"},{"id":21,"name":"Juhász-Kerekes Adél","check_in":"2025-03-18","check_out":"2025-09-23","number_of_guests":2,"type":"twin"},{"id":22,"name":"Kis Barna PhD","check_in":"2024-11-15","check_out":"2025-05-08","number_of_guests":1,"type":"single"},{"id":23,"name":"Prof. Lengyel Zsombor PhD","check_in":"2024-04-20","check_out":"2025-04-08","number_of_guests":1,"type":"single"},{"id":24,"name":"Váradi Ottó PhD","check_in":"2024-09-02","check_out":"2025-12-09","number_of_guests":1,"type":"single"},{"id":25,"name":"Prof. Deák Zsoltné","check_in":"2024-12-26","check_out":"2025-07-06","number_of_guests":1,"type":"single"},{"id":26,"name":"Máté Mia","check_in":"2025-03-20","check_out":"2025-12-25","number_of_guests":1,"type":"single"},{"id":27,"name":"Varga Áronné","check_in":"2025-03-11","check_out":"2026-03-09","number_of_guests":1,"type":"single"},{"id":28,"name":"Fekete Dalma PhD","check_in":"2024-12-27","check_out":"2025-05-17","number_of_guests":4,"type":"family"},{"id":29,"name":"Bognár Patrik PhD","check_in":"2024-11-27","check_out":"2025-11-03","number_of_guests":2,"type":"double"},{"id":30,"name":"Prof. Pásztor Benedek","check_in":"2024-12-16","check_out":"2025-06-10","number_of_guests":3,"type":"family"},{"id":31,"name":"Simon Rudolf PhD","check_in":"2024-07-10","check_out":"2025-11-10","number_of_guests":2,"type":"twin"},{"id":32,"name":"Özv. Kozma Endrené","check_in":"2025-03-27","check_out":"2025-04-02","number_of_guests":1,"type":"single"},{"id":33,"name":"Pap Rebeka PhD","check_in":"2024-04-26","check_out":"2025-11-25","number_of_guests":3,"type":"family"},{"id":34,"name":"Dr. Szőke Barnabásné","check_in":"2024-04-02","check_out":"2025-07-24","number_of_guests":4,"type":"family"},{"id":35,"name":"Szalai Doriánné","check_in":"2025-01-01","check_out":"2025-05-03","number_of_guests":1,"type":"single"},{"id":36,"name":"Fodor Gábor PhD","check_in":"2024-05-10","check_out":"2026-01-26","number_of_guests":2,"type":"double"},{"id":37,"name":"Kocsis Maja","check_in":"2025-02-10","check_out":"2025-09-06","number_of_guests":2,"type":"double"},{"id":38,"name":"Bálint Endrené","check_in":"2024-09-14","check_out":"2025-04-10","number_of_guests":2,"type":"twin"},{"id":39,"name":"Tóthné Papp Olívia","check_in":"2024-12-23","check_out":"2025-11-11","number_of_guests":1,"type":"single"},{"id":40,"name":"Balog Mirella","check_in":"2025-03-16","check_out":"2025-10-31","number_of_guests":1,"type":"single"}]}}
+        "404":
+          description: Nem található a keresett elem
+    put:
+      tags: [Hotels]
+      summary: Egy adott hotel frissítése
+      operationId: hotels.update
+      parameters:
+        - name: hotel
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HotelRequest"
+            example: {"name":"Hegedüs Updated","address":"9952 Budapest, Nagy játszótér 52.","rating":3.5}
+      responses:
+        "200":
+          description: Hotel frissítve
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/HotelResource"
+              example: {"data":{"id":2,"name":"Hegedüs Updated","address":"9952 Budapest, Nagy játszótér 52.","rating":3.5,"bookings":[]}}
+        "404":
+          description: Nem található a keresett elem
+        "422":
+          description: Validációs hiba
+    delete:
+      tags: [Hotels]
+      summary: Egy adott hotel törlése
+      operationId: hotels.destroy
+      parameters:
+        - name: hotel
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 3
+      responses:
+        "204":
+          description: Elem törölve
+        "404":
+          description: Nem található a keresett elem
+        "500":
+          description: Szerver hiba
+
+  /api/bookings:
+    get:
+      tags: [Bookings]
+      summary: Foglalások listájának lekérése
+      operationId: bookings.index
+      responses:
+        "200":
+          description: Foglalások listája
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/BookingResource"
+              example: {"data":[{"id":1,"name":"Prof. Fehér Bence","check_in":"2024-08-10","check_out":"2025-06-08","number_of_guests":3,"type":"family","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":2,"name":"Magyar Kornél PhD","check_in":"2024-09-29","check_out":"2025-10-04","number_of_guests":4,"type":"family","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":3,"name":"Veresné Fodor Szandra","check_in":"2024-11-30","check_out":"2026-03-05","number_of_guests":6,"type":"family","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":4,"name":"Prof. Oláh Balázs","check_in":"2024-06-17","check_out":"2025-08-05","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":5,"name":"Budai Árpád PhD","check_in":"2024-10-17","check_out":"2025-09-01","number_of_guests":2,"type":"double","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":6,"name":"Kozma Ernő PhD","check_in":"2024-12-17","check_out":"2025-11-03","number_of_guests":2,"type":"twin","hotel":{"id":2,"name":"Hegedüs Updated","address":"9952 Budapest, Nagy játszótér 52.","rating":3.5}},{"id":7,"name":"Simon Vincéné","check_in":"2024-07-12","check_out":"2025-05-06","number_of_guests":1,"type":"single","hotel":{"id":2,"name":"Hegedüs Updated","address":"9952 Budapest, Nagy játszótér 52.","rating":3.5}},{"id":8,"name":"Ifj. Orbán Bendegúz","check_in":"2025-01-02","check_out":"2025-10-23","number_of_guests":2,"type":"double","hotel":{"id":2,"name":"Hegedüs Updated","address":"9952 Budapest, Nagy játszótér 52.","rating":3.5}},{"id":9,"name":"Prof. Jakab Milla","check_in":"2024-08-08","check_out":"2025-12-18","number_of_guests":6,"type":"family","hotel":{"id":2,"name":"Hegedüs Updated","address":"9952 Budapest, Nagy játszótér 52.","rating":3.5}},{"id":10,"name":"Fülöp Antal","check_in":"2024-07-23","check_out":"2026-01-07","number_of_guests":1,"type":"single","hotel":{"id":2,"name":"Hegedüs Updated","address":"9952 Budapest, Nagy játszótér 52.","rating":3.5}},{"id":11,"name":"Nemes István","check_in":"2025-01-23","check_out":"2025-11-19","number_of_guests":2,"type":"double","hotel":{"id":3,"name":"Novák","address":"6473 Székesfehérvár, Gitta turistaút 94.","rating":3.38}},{"id":12,"name":"Szücs Attila PhD","check_in":"2025-02-15","check_out":"2025-08-03","number_of_guests":2,"type":"double","hotel":{"id":3,"name":"Novák","address":"6473 Székesfehérvár, Gitta turistaút 94.","rating":3.38}},{"id":13,"name":"Hajdu Géza PhD","check_in":"2024-05-09","check_out":"2025-05-26","number_of_guests":2,"type":"double","hotel":{"id":3,"name":"Novák","address":"6473 Székesfehérvár, Gitta turistaút 94.","rating":3.38}},{"id":14,"name":"Szücs Patrícia","check_in":"2024-11-08","check_out":"2025-12-26","number_of_guests":6,"type":"family","hotel":{"id":3,"name":"Novák","address":"6473 Székesfehérvár, Gitta turistaút 94.","rating":3.38}},{"id":15,"name":"Id. Soós Szervác","check_in":"2024-06-23","check_out":"2025-12-23","number_of_guests":1,"type":"single","hotel":{"id":3,"name":"Novák","address":"6473 Székesfehérvár, Gitta turistaút 94.","rating":3.38}},{"id":16,"name":"Báró Máté Áron PhD","check_in":"2024-11-06","check_out":"2025-09-03","number_of_guests":4,"type":"family","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":17,"name":"Pataki-Gáspár Kata","check_in":"2024-07-03","check_out":"2025-10-08","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":18,"name":"Özv. Török Dorián PhD","check_in":"2024-06-03","check_out":"2025-12-10","number_of_guests":2,"type":"twin","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":19,"name":"Özv. Papp Vincéné","check_in":"2024-04-06","check_out":"2025-08-30","number_of_guests":2,"type":"double","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":20,"name":"Dr. Veres Endre PhD","check_in":"2024-06-10","check_out":"2025-06-20","number_of_guests":2,"type":"twin","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":21,"name":"Juhász-Kerekes Adél","check_in":"2025-03-18","check_out":"2025-09-23","number_of_guests":2,"type":"twin","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":22,"name":"Kis Barna PhD","check_in":"2024-11-15","check_out":"2025-05-08","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":23,"name":"Prof. Lengyel Zsombor PhD","check_in":"2024-04-20","check_out":"2025-04-08","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":24,"name":"Váradi Ottó PhD","check_in":"2024-09-02","check_out":"2025-12-09","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":25,"name":"Prof. Deák Zsoltné","check_in":"2024-12-26","check_out":"2025-07-06","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":26,"name":"Máté Mia","check_in":"2025-03-20","check_out":"2025-12-25","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":27,"name":"Varga Áronné","check_in":"2025-03-11","check_out":"2026-03-09","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":28,"name":"Fekete Dalma PhD","check_in":"2024-12-27","check_out":"2025-05-17","number_of_guests":4,"type":"family","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":29,"name":"Bognár Patrik PhD","check_in":"2024-11-27","check_out":"2025-11-03","number_of_guests":2,"type":"double","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":30,"name":"Prof. Pásztor Benedek","check_in":"2024-12-16","check_out":"2025-06-10","number_of_guests":3,"type":"family","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":31,"name":"Simon Rudolf PhD","check_in":"2024-07-10","check_out":"2025-11-10","number_of_guests":2,"type":"twin","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":32,"name":"Özv. Kozma Endrené","check_in":"2025-03-27","check_out":"2025-04-02","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":33,"name":"Pap Rebeka PhD","check_in":"2024-04-26","check_out":"2025-11-25","number_of_guests":3,"type":"family","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":34,"name":"Dr. Szőke Barnabásné","check_in":"2024-04-02","check_out":"2025-07-24","number_of_guests":4,"type":"family","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":35,"name":"Szalai Doriánné","check_in":"2025-01-01","check_out":"2025-05-03","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":36,"name":"Fodor Gábor PhD","check_in":"2024-05-10","check_out":"2026-01-26","number_of_guests":2,"type":"double","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":37,"name":"Kocsis Maja","check_in":"2025-02-10","check_out":"2025-09-06","number_of_guests":2,"type":"double","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":38,"name":"Bálint Endrené","check_in":"2024-09-14","check_out":"2025-04-10","number_of_guests":2,"type":"twin","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":39,"name":"Tóthné Papp Olívia","check_in":"2024-12-23","check_out":"2025-11-11","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}},{"id":40,"name":"Balog Mirella","check_in":"2025-03-16","check_out":"2025-10-31","number_of_guests":1,"type":"single","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}}]}
+    post:
+      tags: [Bookings]
+      summary: Új foglalás létrehozása
+      operationId: bookings.store
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookingRequest"
+            example: {"hotel_id":1,"name":"Teszt Elek","check_in":"2025-02-01","check_out":"2025-02-05","number_of_guests":2,"type":"double"}
+      responses:
+        "201":
+          description: Foglalás létrehozva
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/BookingResource"
+              example: {"data":{"id":41,"name":"Teszt Elek","check_in":"2025-02-01","check_out":"2025-02-05","number_of_guests":2,"type":"double","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}}}
+        "422":
+          description: Validációs hiba
+
+  /api/bookings/{booking}:
+    get:
+      tags: [Bookings]
+      summary: Egy adott foglalás lekérése
+      operationId: bookings.show
+      parameters:
+        - name: booking
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 10
+      responses:
+        "200":
+          description: Egy adott foglalás
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/BookingResource"
+              example: {"data":{"id":10,"name":"Fülöp Antal","check_in":"2024-07-23","check_out":"2026-01-07","number_of_guests":1,"type":"single","hotel":{"id":2,"name":"Hegedüs Updated","address":"9952 Budapest, Nagy játszótér 52.","rating":3.5}}}
+        "404":
+          description: Nem található a keresett elem
+    put:
+      tags: [Bookings]
+      summary: Egy adott foglalás frissítése
+      operationId: bookings.update
+      parameters:
+        - name: booking
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 11
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookingRequest"
+            example: {"hotel_id":1,"name":"Nemes István Updated","check_in":"2025-01-23","check_out":"2025-11-19","number_of_guests":2,"type":"double"}
+      responses:
+        "200":
+          description: Foglalás frissítve
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/BookingResource"
+              example: {"data":{"id":11,"name":"Nemes István Updated","check_in":"2025-01-23","check_out":"2025-11-19","number_of_guests":2,"type":"double","hotel":{"id":1,"name":"Szilágyi Bt.","address":"5869 Sopron, Henrietta turistaút 8.","rating":1.92}}}
+        "404":
+          description: Nem található a keresett elem
+        "422":
+          description: Validációs hiba
+    delete:
+      tags: [Bookings]
+      summary: Egy adott foglalás törlése
+      operationId: bookings.destroy
+      parameters:
+        - name: booking
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 12
+      responses:
+        "204":
+          description: Elem törölve
+        "404":
+          description: Nem található a keresett elem
+        "500":
+          description: Szerver hiba
+
+components:
+  schemas:
+    HotelRequest:
+      type: object
+      additionalProperties: false
+      required: [name, address]
+      properties:
+        name:
+          type: string
+          maxLength: 45
+        address:
+          type: string
+          maxLength: 80
+        rating:
+          type: number
+          nullable: true
+
+    BookingRequest:
+      type: object
+      additionalProperties: false
+      required: [hotel_id, name, check_in, check_out, number_of_guests, type]
+      properties:
+        hotel_id:
+          type: integer
+        name:
+          type: string
+          maxLength: 45
+        check_in:
+          type: string
+          format: date
+        check_out:
+          type: string
+          format: date
+        number_of_guests:
+          type: integer
+          minimum: 1
+          maximum: 6
+        type:
+          type: string
+          maxLength: 20
+          enum: ["single","double","twin","family"]
+
+    HotelResource:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        address:
+          type: string
+        rating:
+          type: number
+          nullable: true
+        bookings:
+          type: array
+          description: "A hotelhez tartozó foglalások (csak ha a relation be van töltve)."
+          items:
+            $ref: "#/components/schemas/BookingResource"
+
+    BookingResource:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        check_in:
+          type: string
+          format: date
+        check_out:
+          type: string
+          format: date
+        number_of_guests:
+          type: integer
+        type:
+          type: string
+        hotel:
+          nullable: true
+          description: "A foglaláshoz tartozó hotel (csak ha a relation be van töltve)."
+          allOf:
+            - $ref: "#/components/schemas/HotelResource"
