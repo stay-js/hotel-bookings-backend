@@ -20,3 +20,11 @@ else
     echo "Docker volume 'shared_pnpm' does not exist. Creating..."
     docker volume create shared_pnpm
 fi
+
+echo "Installing Frontend dependencies on host machine..."
+docker run --rm \
+  -v "$(pwd)/frontend:/app" \
+  -v shared_pnpm:/shared_pnpm \
+  -w /app \
+  node:24-alpine \
+  sh -c "corepack enable && pnpm install --store-dir /shared_pnpm --dangerously-allow-all-builds"
